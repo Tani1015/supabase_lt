@@ -1,0 +1,17 @@
+query getCountryDetails($filter: countrydetailsFilter, $first: Int!) {
+  countrydetailsCollection(filter: $filter, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      node {
+        country_id
+        capital
+        population
+        currency
+        area
+        gdp
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+name: supabase_lt
+description: "supabase_meetup"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Supabase
+  supabase_flutter: ^2.6.0
+  
+  # GraphQL
+  graphql_flutter: ^5.1.2
+
+  # State Management
+  flutter_hooks: ^0.20.5
+  freezed_annotation: ^2.2.0
+  hooks_riverpod: ^2.3.6
+  json_annotation: ^4.9.0
+  riverpod_annotation: ^2.1.1
+  riverpod_generator: ^2.2.3
+
+
+  # Cache
+  hive: ^2.2.3
+
+  # Env
+  envied: ^0.5.4+1
+
+  # Dependencies
+  http: ^1.2.2
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # Generator
+  build_runner: ^2.4.12
+  graphql_codegen: ^0.14.0
+  envied_generator: ^0.5.4+1
+  json_serializable: ^6.8.0
+  freezed: ^2.5.7
+  
+
+  pedantic_mono: ^1.28.0
+
+flutter:
+  uses-material-design: true

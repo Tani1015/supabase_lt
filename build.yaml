@@ -1,0 +1,44 @@
+targets:
+  $default:
+    sources:
+      - graphql/**.graphql
+      - lib/**
+      - $package$
+    builders:
+      graphql_codegen:
+        generate_for:
+          include:
+            - graphql/**.graphql
+        options:
+          clients:
+            - graphql
+            - graphql_flutter
+          outputDirectory: /lib/generated/graphql
+          assetsPath: graphql/**
+          
+      source_gen|combining_builder:
+        generate_for:
+          include:
+            - lib/common/env/*.dart
+            - lib/domain/**/models/*.dart
+            - lib/infrastructure/**
+            - lib/presentation/pages/**/states/*_state.dart
+        options:
+          build_extensions:
+            '^lib/common/env/{{}}.dart': 'lib/generated/env/{{}}.g.dart'
+            '^lib/domain/{{}}.dart': 'lib/generated/domain/{{}}.g.dart'
+            '^lib/infrastructure/{{}}.dart': 'lib/generated/infrastructure/{{}}.g.dart'
+            '^lib/presentation/pages/{{}}.dart': 'lib/generated/presentation/{{}}.g.dart'
+          ignore_for_file:
+            - type=lint
+            - duplicate_ignore
+            
+      freezed:
+        generate_for:
+          include:
+            - lib/domain/**/*.dart
+            - lib/presentation/**/states/*_state.dart
+        options:
+          build_extensions:
+            '^lib/domain/{{}}.dart': 'lib/generated/domain/{{}}.freezed.dart'
+            '^lib/presentation/pages/{{}}.dart': 'lib/generated/presentation/{{}}.freezed.dart'

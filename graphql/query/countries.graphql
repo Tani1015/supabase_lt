@@ -1,0 +1,35 @@
+query getCountries($first: Int!, $after: Cursor) {
+  countriesCollection(first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...countriesFragment
+      }
+    }
+  }
+}
+
+mutation updateCountries($update: countriesUpdateInput!) {
+  updatecountriesCollection(set: $update) {
+    records {
+      ...countriesFragment
+    }
+  }
+}
+
+
+
+fragment countriesFragment on countries {
+  id
+  name
+  countrydetailsCollection {
+    edges {
+      node {
+        population
+      }
+    }
+  }
+}
